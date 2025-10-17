@@ -5,9 +5,7 @@ void main() {
   runApp(const SimpleNotesApp()); // Menjalankan aplikasi utama
 }
 
-// ===========================
 // APLIKASI UTAMA
-// ===========================
 class SimpleNotesApp extends StatelessWidget {
   const SimpleNotesApp({super.key});
 
