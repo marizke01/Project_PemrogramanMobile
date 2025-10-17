@@ -5,7 +5,9 @@ void main() {
   runApp(const SimpleNotesApp()); // Menjalankan aplikasi utama
 }
 
+// ===========================
 // APLIKASI UTAMA
+// ===========================
 class SimpleNotesApp extends StatelessWidget {
   const SimpleNotesApp({super.key});
 
@@ -29,8 +31,9 @@ class SimpleNotesApp extends StatelessWidget {
   }
 }
 
+// ===========================
 // HALAMAN UTAMA CATATAN
-
+// ===========================
 class NotesHome extends StatefulWidget {
   const NotesHome({super.key});
 
@@ -178,6 +181,110 @@ class _NotesHomeState extends State<NotesHome> {
           ),
         );
       },
+    );
+  }
+
+  // ===========================
+  // TAMPILAN UTAMA APLIKASI
+  // ===========================
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFFFFF8F0),
+
+      // AppBar di bagian atas
+      appBar: AppBar(
+        backgroundColor: const Color(0xFFB29470),
+        elevation: 0,
+        centerTitle: true,
+        title: const Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.edit_note_rounded, color: Colors.white),
+            SizedBox(width: 8),
+            Text(
+              "Simple Notes",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 0.8),
+            ),
+          ],
+        ),
+      ),
+
+      // Body utama aplikasi
+      body: _notes.isEmpty
+          // Jika belum ada catatan, tampilkan teks
+          ? const Center(
+              child: Text(
+                "Belum ada catatan",
+                style: TextStyle(
+                    color: Color(0xFF8B7355),
+                    fontSize: 16,
+                    fontStyle: FontStyle.italic),
+              ),
+            )
+          // Jika ada catatan, tampilkan dalam ListView
+          : ListView.builder(
+              padding: const EdgeInsets.all(16),
+              itemCount: _notes.length,
+              itemBuilder: (context, index) {
+                final note = _notes[index];
+                return AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  margin: const EdgeInsets.only(bottom: 12),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFFFF5E4),
+                    borderRadius: BorderRadius.circular(18),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.brown.withOpacity(0.15),
+                        blurRadius: 8,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.all(15),
+                    // Judul catatan
+                    title: Text(
+                      note['title'] ?? '',
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
+                          color: Color(0xFF5C4033)),
+                    ),
+                    // Isi catatan
+                    subtitle: Text(
+                      note['content'] ?? '',
+                      style: const TextStyle(
+                        color: Color(0xFF8B7355),
+                        height: 1.4,
+                      ),
+                    ),
+                    // Tombol hapus catatan
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete_outline_rounded,
+                          color: Color(0xFFB29470)),
+                      onPressed: () {
+                        setState(() {
+                          _notes.removeAt(index); // Hapus catatan
+                        });
+                      },
+                    ),
+                  ),
+                );
+              },
+            ),
+
+      // Tombol tambah catatan (Floating Action Button)
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color(0xFFB29470),
+        onPressed: _showAddNoteDialog, // Tampilkan dialog tambah catatan
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        child: const Icon(Icons.add_rounded, color: Colors.white, size: 28),
+      ),
     );
   }
 }
