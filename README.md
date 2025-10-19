@@ -32,15 +32,21 @@ Aplikasi Simple Notes memungkinkan pengguna untuk:
 
 final List<Map<String, String>> _notes = [];
 
-List digunakan sebagai wadah untuk menyimpan multiple catatan. Map<String, String> setiap catatan disimpan sebagai Map dengan key-value pairs. _notes adalah variabel yang menampung semua data catatan.
+List digunakan sebagai wadah untuk menyimpan multiple catatan.
+Map<String, String> setiap catatan disimpan sebagai Map dengan key-value pairs.
+_notes adalah variabel yang menampung semua data catatan.
 
-Method add() digunakan untuk menambahkan catatan baru. Setiap catatan memiliki struktur:
+Method add() digunakan untuk menambahkan catatan baru.
+Setiap catatan memiliki struktur:
 {
   'title': 'Judul Catatan',
   'content': 'Isi catatan...'
 }
 
-Data diakses menggunakan index _notes[index]. Kemudian menampilkan data dari list menggunakan itemCount: _notes.length - Menentukan berapa banyak item yang akan ditampilkan. ListView.builder secara efisien hanya merender item yang terlihat di layar.
+Data diakses menggunakan index _notes[index].
+Kemudian menampilkan data dari list menggunakan itemCount: _notes.length untuk menentukan berapa banyak item yang akan ditampilkan.
+ListView.builder secara efisien hanya merender item yang terlihat di layar.
 
-Menghapus data menggunakan removeAt(index) menghapus catatan pada posisi tertentu dan Operasi ini langsung mempengaruhi list asli.
+Menghapus catatan menggunakan removeAt(index) pada posisi tertentu dan
+Operasi ini langsung mempengaruhi list asli.
 
