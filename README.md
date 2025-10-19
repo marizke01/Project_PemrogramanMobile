@@ -24,9 +24,14 @@ Aplikasi Simple Notes memungkinkan pengguna untuk:
 
 ## Screenshot Aplikasi
 
+![alt text](<Screenshot - aplikasi.png>)
+
 ### Tampilan Form Input
 
+![alt text](<Screenshot - tampilan form input.png>)
+
 ### Tampilan Daftar Catatan
+![alt text](<Screenshot - tampilan daftar catatan.png>)
 
 ## Penggunaan List untuk Menyimpan Data
 
